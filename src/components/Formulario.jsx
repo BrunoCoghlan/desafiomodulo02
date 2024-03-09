@@ -16,11 +16,19 @@ const Formulario = ({ handleError }) => {
     // PREVIENE QUE SE RECARGE LA PAGINA
     e.preventDefault()
     // EVALUACION DE CAMPOS VACIOS, PASSWORD IGUALES Y MAYORES A 3 DIGITOS
-    if (name === '' || email === '' || pswd !== pswd2 || (pswd.length < 4)) {
-      handleError(true)
+    if (name === '' || email === '') {
+      handleError(true, 'Completa todos los campos solicitados')
       return
     }
-    handleError(false)
+    if (pswd !== pswd2) {
+      handleError(true, 'Las contraseñas no coinciden')
+      return
+    }
+    if ((pswd.length < 4)) {
+      handleError(true, 'La contraseña minimo de 4 caracteres')
+      return
+    }
+    handleError(false, 'Registro exitoso!')
   }
   return (
     <>

@@ -3,25 +3,25 @@ import Formulario from './Formulario.jsx'
 import SocialButton from './SocialButton.jsx'
 import React, { useState } from 'react'
 
-const Registro = () => {
+const Registro = ({ handleMensaje, mensaje }) => {
   const [error, setError] = useState('')
   const [alert, setAlert] = useState(null)
   // FUNCION SE ASEGURA DE QUE EL VALOR DE ENTRADA SEA BOOLEANO.
-  const handleError = (value) => {
+  const handleError = (value, mensaje) => {
     if (typeof value === 'boolean') {
       setAlert(true)
       setError(value)
+      handleMensaje(mensaje)
       return
     }
     setError(null)
   }
   // FUNCION DEFINE EL COLOR Y MENSAJE DE ETIQUETA
   const alerta = () => {
-    console.log('aca')
     if (error) {
-      return { color: 'danger', mensaje: 'Completa todos los campos' }
+      return { color: 'danger', mensaje }
     }
-    return { color: 'success', mensaje: 'Registro Exitoso' }
+    return { color: 'success', mensaje }
   }
   // EVITA QUE SE MUESTRE LA ALERTA ANTES DE OPIMIR EL BOTON
   return (

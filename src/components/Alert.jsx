@@ -1,5 +1,5 @@
 import Alert from 'react-bootstrap/Alert'
-
+// COMPONENTE ALERT BASIC DE BOOSTRAP
 const Alerta = ({ alerta }) => {
   return (
     <>
